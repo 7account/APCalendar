@@ -1,7 +1,6 @@
 public class APCalendar {
     private static boolean isLeapYear(int year) {
-        if (year % 4 == 0 && (!(year % 100 == 0) || year % 400 == 0)) return true;
-        return false;
+        return ((year % 4 == 0) && (!(year % 100 == 0) || year % 400 == 0));
     }
 
     public static int numberOfLeapYears(int year1, int year2) {
@@ -14,7 +13,7 @@ public class APCalendar {
 
     private static int firstDayOfYear(int year) {
         int day = 1;
-        for (int i = 0; i < year; i++) {
+        for (int i = 1; i < year; i++) {
             day++;
             if (isLeapYear(i)) day++;
         }
@@ -35,7 +34,7 @@ public class APCalendar {
         if (month > 9) days += 30;
         if (month > 10) days += 31;
         if (month > 11) days += 30;
-        days += days;
+        days += day;
         return days;
     }
 
